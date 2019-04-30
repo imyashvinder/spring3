@@ -8,9 +8,9 @@ node('master') {
 
          if("${BRANCH_NAME}" == "dev"){
             stage("mvn clean") {
+	       //checkout scm
                sh '''
-               cd bfaService
-               ls -l
+               echo "${WORKSPACE}"
                '''
             }
             // stage("mvn compile") {
