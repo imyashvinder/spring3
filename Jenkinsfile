@@ -1,46 +1,32 @@
 ansiColor('xterm') {
 node('master') {
         properties ([
-            disableConcurrentBuilds(),
-            parameters([choice(choices: 'preprod\nmaster\nuat\ndev', description: 'Branch Name', name: 'branch')]),
+            buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')),
+            [$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false],
             ])
-        
-        //checkout scm
-        // stage('Checkout Bfa-Batch') {
-        
-        //     git branch: 'master',
-        //         //credentialsId: 'git',
-        //         //url: 'ssh://git@bitbucket.org/ntuclink/bfa-batch.git'
-        //          url: 'ssh://git@github.com/imyashvinder/spring3.git'
-        // }
+      
+         println "${BRANCH_NAME}"
 
-        stage("Clone the Repo for Performing CI/CD") {
-            git credentialsId: "3812f751-0658-484e-b8ba-1ef633fd0d4a", url: "ssh://git@github.com/imyashvinder/spring3.git", branch: "${branch}"
-        }
-        
-        stage("ls -l")
-        {
-           sh "ls -l"
-        }
+      //   stage("dev branch") {
+      //      echo "this is dev branch"
+      //   } 
 
-        
-
-        stage("cd ")
-        {
-           sh "cd ${WORKSPACE}; cat README.md"
-        }
+      //   stage("master branch") {
+      //      echo "this is master branch"
+      //   }
    
-     post {
-        always {
-
-            cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenSuccess: true, cleanWhenUnstable: true, deleteDirs: true)
-        }
-    }  
+     cleanWs(
+            cleanWhenAborted: true,
+            cleanWhenFailure: true,
+            cleanWhenNotBuilt: true,
+            cleanWhenSuccess: true,
+            cleanWhenUnstable: true,
+            deleteDirs: true
+        )  
 	
 }
         
 }
-
 
 
 
