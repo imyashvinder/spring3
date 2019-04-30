@@ -14,52 +14,26 @@ node('master') {
         // }
 
         stage("Clone the Repo for Performing CI/CD") {
-            git credentialsId: "3812f751-0658-484e-b8ba-1ef633fd0d4a", url: "ssh://git@github.com/imyashvinder/spring3.git"
+            git credentialsId: "3812f751-0658-484e-b8ba-1ef633fd0d4a", url: "ssh://git@github.com/imyashvinder/spring3.git", branch: "preprod"
         }
-
-        
-      //   stage("checkout scm")
-      //   {
-      //     checkout scm
-      //   }
         
         stage("ls -l")
         {
-         //   sh "cd bfaService"
            sh "ls -l"
         }
 
-        stage("cd ")
-        {
-         //   sh "cd bfaService"
-           sh "cd src; ls -l"
-        }
-
-        stage("cd ")
-        {
-         //   sh "cd bfaService"
-           sh "cd src"
-        }
         
 
         stage("cd ")
         {
-         //   sh "cd bfaService"
-           sh "ls -l"
+           sh "cd ${WORKSPACE}; pwd"
         }
-      //   stage("ls -l inside bfaService")
-      //   {
-      //      sh "ls -l bfaService"    
-      //   }
-        
-      //   stage("ls -l inside bfaService")
-      //   {
-      //      sh "ls -l bfaService"
-      //   }
+      
 	
 }
         
 }
+
 
 
 
