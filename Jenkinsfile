@@ -58,14 +58,14 @@ node('master') {
       //      echo "This is master branch"
       //   }
    
-     cleanWs(
-            cleanWhenAborted: true,
-            cleanWhenFailure: true,
-            cleanWhenNotBuilt: true,
-            cleanWhenSuccess: true,
-            cleanWhenUnstable: true,
-            deleteDirs: true
-        )  
+     //cleanWs(
+     //       cleanWhenAborted: true,
+     //       cleanWhenFailure: true,
+     //       cleanWhenNotBuilt: true,
+     //       cleanWhenSuccess: true,
+     //       cleanWhenUnstable: true,
+     //       deleteDirs: true
+     //   )  
 	
 }
         
