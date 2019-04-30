@@ -26,7 +26,7 @@ node('master') {
             }
          }
          else {
-            stage(figure out branch) {
+            stage("figure out branch") {
                echo "This is ....." + "${BRANCH_NAME}"
             }
          } 
