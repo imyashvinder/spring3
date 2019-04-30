@@ -29,7 +29,13 @@ node('master') {
         {
            sh "cd ${WORKSPACE}; cat README.md"
         }
-      
+   
+     post {
+        always {
+
+            cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenSuccess: true, cleanWhenUnstable: true, deleteDirs: true)
+        }
+    }  
 	
 }
         
