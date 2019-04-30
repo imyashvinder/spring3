@@ -13,14 +13,28 @@ node('master') {
                cd "${WORKSPACE}"
                ls -l
                /usr/local/bin/mvn352 clean
+               /usr/local/bin/mvn352 compile
+               /usr/local/bin/mvn352 clean package
                '''
             }
-            // stage("mvn compile") {
-            //    echo "This is...." + "${BRANCH_NAME}"
-            // }
-            // stage("mvn package") {
-            //    echo "This is...." + "${BRANCH_NAME}"
-            // }
+            stage("mvn compile") {
+	       checkout scm
+               sh '''
+               echo "${WORKSPACE}"
+               cd "${WORKSPACE}"
+               ls -l
+               /usr/local/bin/mvn352 compile
+               '''
+            }
+            stage("mvn package") {
+	       checkout scm
+               sh '''
+               echo "${WORKSPACE}"
+               cd "${WORKSPACE}"
+               ls -l
+               /usr/local/bin/mvn352 clean package
+               '''
+            }
          }
          else if ("${BRANCH_NAME}" == "master") {
             stage("Build from master") {
