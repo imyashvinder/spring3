@@ -13,7 +13,7 @@ node('master') {
                echo "${WORKSPACE}"
                cd "${WORKSPACE}"
                ls -l
-               echo "${mvn352}"
+               /usr/local/bin/mvn352 clean
                '''
             }
             // stage("mvn compile") {
