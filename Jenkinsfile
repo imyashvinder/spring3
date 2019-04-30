@@ -7,12 +7,26 @@ node('master') {
       
          println "${BRANCH_NAME}"
 
-      //   stage("dev branch") {
-      //      echo "this is dev branch"
+
+         if("${BRANCH_NAME}" == "dev"){
+            stage("Build from dev") {
+               echo "This is dev branch"
+            }
+         else if ("${BRANCH_NAME}" == "master") {
+            stage("Build from master") {
+               echo "This is master branch"
+            }
+         } 
+         }
+
+
+        
+      //   stage("Build from dev") {
+      //      echo "This is dev branch"
       //   } 
 
-      //   stage("master branch") {
-      //      echo "this is master branch"
+      //   stage("Build from master") {
+      //      echo "This is master branch"
       //   }
    
      cleanWs(
