@@ -9,11 +9,11 @@ node('master') {
          if("${BRANCH_NAME}" == "dev"){
             stage("mvn clean") {
 	       checkout scm
-               //sh '''
-               //echo "${WORKSPACE}"
-               //cd "${WORKSPACE}"
-               //ls -l
-               //'''
+               sh '''
+               echo "${WORKSPACE}"
+               cd "${WORKSPACE}"
+               ls -l
+               '''
             }
             // stage("mvn compile") {
             //    echo "This is...." + "${BRANCH_NAME}"
