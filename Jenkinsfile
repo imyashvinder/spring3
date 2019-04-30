@@ -12,12 +12,18 @@ node('master') {
             stage("Build from dev") {
                echo "This is dev branch"
             }
+         }
          else if ("${BRANCH_NAME}" == "master") {
             stage("Build from master") {
                echo "This is master branch"
             }
-         } 
          }
+         else {
+            stage(figure out branch) {
+               echo "This is ....." + "${BRANCH_NAME}"
+            }
+         } 
+         
 
 
         
