@@ -4,7 +4,6 @@ node('master') {
             buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')),
             [$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false],
             ])
-         def mvn352 = "/usr/local/bin/mvn352"
 
          if("${BRANCH_NAME}" == "dev"){
             stage("mvn clean") {
